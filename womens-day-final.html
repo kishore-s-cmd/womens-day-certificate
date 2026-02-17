@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Day Certificate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .header { text-align: center; margin-bottom: 28px; }
+        .header h1 { color: #f5576c; font-size: 30px; margin-bottom: 8px; }
+        .header p  { color: #888; font-size: 14px; }
+
+        .info-box {
+            background: #fff3f8;
+            border-left: 4px solid #f5576c;
+            padding: 13px 15px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #d63384;
+        }
+
+        .form-group { margin-bottom: 18px; }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        label .optional {
+            font-weight: 400;
+            color: #bbb;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
+            resize: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #f5576c;
+            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn:active  { transform: translateY(0); }
+        .btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+        .success-message {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .error-message {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .loading { display: none; text-align: center; margin-top: 20px; }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #f5576c;
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .divider { height: 1px; background: #f0f0f0; margin: 20px 0; }
+
+        .privacy-note { font-size: 11px; color: #bbb; text-align: center; margin-top: 15px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>🌸 Women's Day Certificate</h1>
+        <p>Fill in your details to get your certificate</p>
+    </div>
+
+    <div class="info-box">
+        🎉 Enter your details below to receive your personalized Women's Day certificate instantly!
+    </div>
+
+    <form id="certificateForm">
+
+        <div class="form-group">
+            <label for="participantName">Full Name <span style="color:#f5576c">*</span></label>
+            <input type="text" id="participantName" placeholder="Enter your full name" required autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number <span style="color:#f5576c">*</span></label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" required autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address <span class="optional">(optional)</span></label>
+            <input type="email" id="email" placeholder="your@email.com" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address <span style="color:#f5576c">*</span></label>
+            <textarea id="address" rows="3" placeholder="Enter your address" required></textarea>
+        </div>
+
+        <div class="divider"></div>
+
+        <button type="submit" class="btn" id="submitBtn">🎁 Get My Certificate</button>
+    </form>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p style="margin-top:15px; color:#f5576c; font-weight:600;">Saving details & generating your certificate...</p>
+    </div>
+
+    <div class="success-message" id="successMessage">
+        ✅ Certificate generated! Download has started.
+    </div>
+
+    <div class="error-message" id="errorMessage"></div>
+
+    <p class="privacy-note">🔒 Your details are stored securely and used only for event records.</p>
+
+</div>
+
+<script>
+    // ═══════════════════════════════════════════════════════
+    //  CONFIGURATION  — only edit values inside this block
+    // ═══════════════════════════════════════════════════════
+    const CONFIG = {
+
+        // ① Paste your Google Apps Script Web App URL here after setup
+        googleSheetURL: 'https://script.google.com/macros/s/AKfycbyCv8BSde0luialA3iYyV3_fxAslBYzfCssu4pSiw_Nv2UDzofhQAtmK-RDtO5q0_onVw/exec',
+
+        // ② Certificate template filename (must be in same folder as this HTML)
+        templateFile: 'certificate-template.png',
+
+        // ③ Where the name appears on the certificate (percentage of page size)
+        namePositionX: 50,    // 0 = Left edge | 50 = Center | 100 = Right edge
+        namePositionY: 50,    // 0 = Top edge  | 50 = Middle  | 100 = Bottom edge
+
+        // ④ Name text style
+        fontSize:  36,          // increase/decrease text size
+        textColor: '#000000',   // #000000=Black | #FFFFFF=White | #FFD700=Gold
+        fontStyle: 'bold'       // 'bold' or 'normal'
+    };
+    // ═══════════════════════════════════════════════════════
+
+    let templateImage = null;
+
+    // Load certificate template on page start
+    window.addEventListener('load', function () {
+        const img = new Image();
+        img.onload = function () {
+            const canvas = document.createElement('canvas');
+            canvas.width  = img.width;
+            canvas.height = img.height;
+            canvas.getContext('2d').drawImage(img, 0, 0);
+            templateImage = canvas.toDataURL('image/png');
+        };
+        img.onerror = function () {
+            console.error('Could not load template: ' + CONFIG.templateFile +
+                          '. Make sure it is in the same folder as this HTML file.');
+        };
+        img.src = CONFIG.templateFile;
+    });
+
+    // ── Form submit ──────────────────────────────────────
+    document.getElementById('certificateForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const name    = document.getElementById('participantName').value.trim();
+        const phone   = document.getElementById('phone').value.trim();
+        const email   = document.getElementById('email').value.trim();
+        const address = document.getElementById('address').value.trim();
+
+        if (!name || !phone || !address) {
+            showError('Please fill in all required fields.');
+            return;
+        }
+
+        if (!templateImage) {
+            showError('Template is still loading. Please wait a moment and try again.');
+            return;
+        }
+
+        setLoading(true);
+
+        try {
+            // Step 1 — Save details to Google Sheet
+            await saveToGoogleSheet({ name, phone, email, address });
+
+            // Step 2 — Generate PDF (only name goes on the certificate)
+            await generateCertificate(name);
+
+            setLoading(false);
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('certificateForm').reset();
+
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 6000);
+
+        } catch (err) {
+            console.error(err);
+            showError('Something went wrong. Please try again.');
+            setLoading(false);
+        }
+    });
+
+    // ── Save to Google Sheets ────────────────────────────
+    async function saveToGoogleSheet(data) {
+        if (!CONFIG.googleSheetURL ||
+            CONFIG.googleSheetURL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            // URL not set — skip sheet, still generate certificate
+            console.warn('Google Sheet URL not configured — skipping sheet save.');
+            return;
+        }
+
+        const params = new URLSearchParams({
+            name:      data.name,
+            phone:     data.phone,
+            email:     data.email || '',
+            address:   data.address,
+            timestamp: new Date().toLocaleString()
+        });
+
+        // mode: 'no-cors' is required for Google Apps Script
+        await fetch(CONFIG.googleSheetURL + '?' + params.toString(), {
+            method: 'GET',
+            mode:   'no-cors'
+        });
+    }
+
+    // ── Generate PDF certificate ─────────────────────────
+    async function generateCertificate(name) {
+        const { jsPDF } = window.jspdf;
+
+        // Hex → RGB
+        const hex = CONFIG.textColor;
+        const r   = parseInt(hex.substr(1, 2), 16);
+        const g   = parseInt(hex.substr(3, 2), 16);
+        const b   = parseInt(hex.substr(5, 2), 16);
+
+        // Detect landscape vs portrait from template
+        const img = new Image();
+        img.src = templateImage;
+        await new Promise(res => { img.onload = res; });
+
+        const isLandscape = img.width > img.height;
+        const orientation = isLandscape ? 'landscape' : 'portrait';
+        const doc = new jsPDF({ orientation, unit: 'mm', format: 'a4' });
+
+        const pageWidth  = orientation === 'landscape' ? 297 : 210;
+        const pageHeight = orientation === 'landscape' ? 210 : 297;
+
+        // Place full template image
+        doc.addImage(templateImage, 'PNG', 0, 0, pageWidth, pageHeight);
+
+        // Place name only (no other participant data on certificate)
+        const xPos = (pageWidth  * CONFIG.namePositionX) / 100;
+        const yPos = (pageHeight * CONFIG.namePositionY) / 100;
+
+        doc.setFontSize(CONFIG.fontSize);
+        doc.setTextColor(r, g, b);
+        doc.setFont('helvetica', CONFIG.fontStyle);
+        doc.text(name, xPos, yPos, { align: 'center' });
+
+        doc.save('WomensDay_Certificate_' + name.replace(/\s+/g, '_') + '.pdf');
+    }
+
+    // ── Helpers ──────────────────────────────────────────
+    function setLoading(on) {
+        document.getElementById('submitBtn').disabled = on;
+        document.getElementById('loading').style.display         = on ? 'block' : 'none';
+        document.getElementById('successMessage').style.display  = 'none';
+        document.getElementById('errorMessage').style.display    = 'none';
+    }
+
+    function showError(msg) {
+        const el = document.getElementById('errorMessage');
+        el.textContent = '❌ ' + msg;
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 6000);
+    }
+</script>
+</body>
+</html>
