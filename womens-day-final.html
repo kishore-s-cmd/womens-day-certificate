@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women's Day Certificate</title>
+    <title>Proud Mom Participation Certificate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,7 +22,7 @@
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
             padding: 40px;
             animation: slideIn 0.5s ease-out;
@@ -34,7 +34,7 @@
         }
 
         .header { text-align: center; margin-bottom: 28px; }
-        .header h1 { color: #f5576c; font-size: 30px; margin-bottom: 8px; }
+        .header h1 { color: #f5576c; font-size: 26px; margin-bottom: 8px; }
         .header p  { color: #888; font-size: 14px; }
 
         .info-box {
@@ -43,45 +43,52 @@
             padding: 13px 15px;
             margin-bottom: 25px;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 13px;
             color: #d63384;
         }
 
-        .form-group { margin-bottom: 18px; }
+        .form-group { margin-bottom: 16px; }
 
         label {
             display: block;
             color: #333;
             font-weight: 600;
-            margin-bottom: 7px;
-            font-size: 14px;
+            margin-bottom: 6px;
+            font-size: 13px;
         }
 
-        label .optional {
-            font-weight: 400;
-            color: #bbb;
-            font-size: 12px;
-            margin-left: 5px;
-        }
+        label .required { color: #f5576c; margin-left: 2px; }
+        label .optional { color: #aaa; font-weight: 400; font-size: 12px; margin-left: 5px; }
 
         input[type="text"],
-        input[type="email"],
         input[type="tel"],
+        input[type="email"],
+        select,
         textarea {
             width: 100%;
-            padding: 13px 15px;
+            padding: 12px 14px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14px;
             font-family: inherit;
             transition: all 0.3s ease;
             outline: none;
             resize: none;
+            background: white;
         }
 
-        input:focus, textarea:focus {
+        input:focus, select:focus, textarea:focus {
             border-color: #f5576c;
             box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1);
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
         }
 
         .btn {
@@ -95,7 +102,7 @@
             font-weight: 700;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .btn:hover {
@@ -145,8 +152,6 @@
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .divider { height: 1px; background: #f0f0f0; margin: 20px 0; }
-
         .privacy-note { font-size: 11px; color: #bbb; text-align: center; margin-top: 15px; }
     </style>
 </head>
@@ -154,44 +159,109 @@
 <div class="container">
 
     <div class="header">
-        <h1>🌸 Women's Day Certificate</h1>
-        <p>Fill in your details to get your certificate</p>
+        <h1>💝 Proud Mom Participation</h1>
+        <p>Fill in the details to get your e-certificate</p>
     </div>
 
     <div class="info-box">
-        🎉 Enter your details below to receive your personalized Women's Day certificate instantly!
+        📋 Please fill in all the required details below to receive your participation certificate.
     </div>
 
     <form id="certificateForm">
 
         <div class="form-group">
-            <label for="participantName">Full Name <span style="color:#f5576c">*</span></label>
-            <input type="text" id="participantName" placeholder="Enter your full name" required autocomplete="off">
+            <label for="motherName">Mother Name <span class="required">*</span></label>
+            <input type="text" id="motherName" placeholder="Enter mother's name" required autocomplete="off">
         </div>
 
         <div class="form-group">
-            <label for="phone">Phone Number <span style="color:#f5576c">*</span></label>
-            <input type="tel" id="phone" placeholder="Enter your phone number" required autocomplete="off">
+            <label for="contactNo">Contact No. <span class="required">*</span></label>
+            <input type="tel" id="contactNo" placeholder="Enter contact number" required autocomplete="off">
         </div>
 
         <div class="form-group">
-            <label for="email">Email Address <span class="optional">(optional)</span></label>
-            <input type="email" id="email" placeholder="your@email.com" autocomplete="off">
+            <label for="occupation">Occupation <span class="required">*</span></label>
+            <input type="text" id="occupation" placeholder="Enter occupation" required autocomplete="off">
         </div>
 
         <div class="form-group">
-            <label for="address">Address <span style="color:#f5576c">*</span></label>
+            <label for="emailId">Email ID <span class="optional">(optional)</span></label>
+            <input type="email" id="emailId" placeholder="your@email.com" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="childName">Child Name <span class="required">*</span></label>
+            <input type="text" id="childName" placeholder="Enter child's name" required autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender <span class="required">*</span></label>
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Boy">Boy</option>
+                <option value="Girl">Girl</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="classVal">Class <span class="required">*</span></label>
+            <select id="classVal" required>
+                <option value="">Select Class</option>
+                <option value="Pre-KG">Pre-KG</option>
+                <option value="LKG">LKG</option>
+                <option value="UKG">UKG</option>
+                <option value="1st Standard">1st Standard</option>
+                <option value="2nd Standard">2nd Standard</option>
+                <option value="3rd Standard">3rd Standard</option>
+                <option value="4th Standard">4th Standard</option>
+                <option value="5th Standard">5th Standard</option>
+                <option value="6th Standard">6th Standard</option>
+                <option value="7th Standard">7th Standard</option>
+                <option value="8th Standard">8th Standard</option>
+                <option value="9th Standard">9th Standard</option>
+                <option value="10th Standard">10th Standard</option>
+                <option value="11th Standard">11th Standard</option>
+                <option value="12th Standard">12th Standard</option>
+                <option value="College">College</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address <span class="required">*</span></label>
             <textarea id="address" rows="3" placeholder="Enter your address" required></textarea>
         </div>
 
-        <div class="divider"></div>
+        <div class="form-group">
+            <label for="sourceInfo">Source of Info <span class="required">*</span></label>
+            <select id="sourceInfo" required>
+                <option value="">How did you hear about this event?</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Friends/Family">Friends/Family</option>
+                <option value="School">School</option>
+                <option value="Poster/Banner">Poster/Banner</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="interested">Interested in Future Events? <span class="required">*</span></label>
+            <select id="interested" required>
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Maybe">Maybe</option>
+            </select>
+        </div>
 
         <button type="submit" class="btn" id="submitBtn">🎁 Get My Certificate</button>
     </form>
 
     <div class="loading" id="loading">
         <div class="spinner"></div>
-        <p style="margin-top:15px; color:#f5576c; font-weight:600;">Saving details & generating your certificate...</p>
+        <p style="margin-top:15px; color:#f5576c; font-weight:600;">Saving details & generating certificate...</p>
     </div>
 
     <div class="success-message" id="successMessage">
@@ -206,30 +276,29 @@
 
 <script>
     // ═══════════════════════════════════════════════════════
-    //  CONFIGURATION  — only edit values inside this block
+    //  CONFIGURATION
     // ═══════════════════════════════════════════════════════
     const CONFIG = {
-
-        // ① Paste your Google Apps Script Web App URL here after setup
+        // Paste your Google Apps Script Web App URL here
         googleSheetURL: 'https://script.google.com/macros/s/AKfycbyCv8BSde0luialA3iYyV3_fxAslBYzfCssu4pSiw_Nv2UDzofhQAtmK-RDtO5q0_onVw/exec',
 
-        // ② Certificate template filename (must be in same folder as this HTML)
+        // Certificate template filename (must be in same folder)
         templateFile: 'certificate-template.png',
 
-        // ③ Where the name appears on the certificate (percentage of page size)
-        namePositionX: 50,    // 0 = Left edge | 50 = Center | 100 = Right edge
-        namePositionY: 58,    // 0 = Top edge  | 50 = Middle  | 100 = Bottom edge
+        // Where the MOTHER NAME appears on certificate
+        namePositionX: 50,    // 0=Left | 50=Center | 100=Right
+        namePositionY: 50,    // 0=Top  | 50=Middle | 100=Bottom
 
-        // ④ Name text style
-        fontSize:  20,          // increase/decrease text size
-        textColor: '#000000',   // #000000=Black | #FFFFFF=White | #FFD700=Gold
+        // Text styling
+        fontSize:  36,
+        textColor: '#000000',   // #000000=Black | #FFFFFF=White
         fontStyle: 'bold'       // 'bold' or 'normal'
     };
     // ═══════════════════════════════════════════════════════
 
     let templateImage = null;
 
-    // Load certificate template on page start
+    // Load certificate template
     window.addEventListener('load', function () {
         const img = new Image();
         img.onload = function () {
@@ -240,22 +309,27 @@
             templateImage = canvas.toDataURL('image/png');
         };
         img.onerror = function () {
-            console.error('Could not load template: ' + CONFIG.templateFile +
-                          '. Make sure it is in the same folder as this HTML file.');
+            console.error('Could not load template: ' + CONFIG.templateFile);
         };
         img.src = CONFIG.templateFile;
     });
 
-    // ── Form submit ──────────────────────────────────────
+    // Form submit
     document.getElementById('certificateForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const name    = document.getElementById('participantName').value.trim();
-        const phone   = document.getElementById('phone').value.trim();
-        const email   = document.getElementById('email').value.trim();
-        const address = document.getElementById('address').value.trim();
+        const motherName  = document.getElementById('motherName').value.trim();
+        const contactNo   = document.getElementById('contactNo').value.trim();
+        const occupation  = document.getElementById('occupation').value.trim();
+        const emailId     = document.getElementById('emailId').value.trim();
+        const childName   = document.getElementById('childName').value.trim();
+        const gender      = document.getElementById('gender').value;
+        const classVal  = document.getElementById('classVal').value;
+        const address     = document.getElementById('address').value.trim();
+        const sourceInfo  = document.getElementById('sourceInfo').value;
+        const interested  = document.getElementById('interested').value;
 
-        if (!name || !phone || !address) {
+        if (!motherName || !contactNo || !occupation || !childName || !gender || !classVal || !address || !sourceInfo || !interested) {
             showError('Please fill in all required fields.');
             return;
         }
@@ -268,11 +342,22 @@
         setLoading(true);
 
         try {
-            // Step 1 — Save details to Google Sheet
-            await saveToGoogleSheet({ name, phone, email, address });
+            // Step 1 — Save all details to Google Sheet
+            await saveToGoogleSheet({
+                motherName,
+                contactNo,
+                occupation,
+                emailId,
+                childName,
+                gender,
+                classVal,
+                address,
+                sourceInfo,
+                interested
+            });
 
-            // Step 2 — Generate PDF (only name goes on the certificate)
-            await generateCertificate(name);
+            // Step 2 — Generate PDF (only mother name goes on certificate)
+            await generateCertificate(motherName);
 
             setLoading(false);
             document.getElementById('successMessage').style.display = 'block';
@@ -291,22 +376,25 @@
 
     // ── Save to Google Sheets ────────────────────────────
     async function saveToGoogleSheet(data) {
-        if (!CONFIG.googleSheetURL ||
-            CONFIG.googleSheetURL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-            // URL not set — skip sheet, still generate certificate
-            console.warn('Google Sheet URL not configured — skipping sheet save.');
+        if (!CONFIG.googleSheetURL) {
+            console.warn('Google Sheet URL not configured.');
             return;
         }
 
         const params = new URLSearchParams({
-            name:      data.name,
-            phone:     data.phone,
-            email:     data.email || '',
-            address:   data.address,
-            timestamp: new Date().toLocaleString()
+            timestamp:   new Date().toLocaleString(),
+            motherName:  data.motherName,
+            contactNo:   data.contactNo,
+            occupation:  data.occupation,
+            emailId:     data.emailId || '',
+            childName:   data.childName,
+            gender:      data.gender,
+            classVal:       data.classVal,
+            address:     data.address,
+            sourceInfo:  data.sourceInfo,
+            interested:  data.interested
         });
 
-        // mode: 'no-cors' is required for Google Apps Script
         await fetch(CONFIG.googleSheetURL + '?' + params.toString(), {
             method: 'GET',
             mode:   'no-cors'
@@ -323,7 +411,7 @@
         const g   = parseInt(hex.substr(3, 2), 16);
         const b   = parseInt(hex.substr(5, 2), 16);
 
-        // Detect landscape vs portrait from template
+        // Detect orientation
         const img = new Image();
         img.src = templateImage;
         await new Promise(res => { img.onload = res; });
@@ -335,10 +423,10 @@
         const pageWidth  = orientation === 'landscape' ? 297 : 210;
         const pageHeight = orientation === 'landscape' ? 210 : 297;
 
-        // Place full template image
+        // Place template
         doc.addImage(templateImage, 'PNG', 0, 0, pageWidth, pageHeight);
 
-        // Place name only (no other participant data on certificate)
+        // Place mother name only
         const xPos = (pageWidth  * CONFIG.namePositionX) / 100;
         const yPos = (pageHeight * CONFIG.namePositionY) / 100;
 
@@ -347,7 +435,7 @@
         doc.setFont('helvetica', CONFIG.fontStyle);
         doc.text(name, xPos, yPos, { align: 'center' });
 
-        doc.save('WomensDay_Certificate_' + name.replace(/\s+/g, '_') + '.pdf');
+        doc.save('ProudMom_Certificate_' + name.replace(/\s+/g, '_') + '.pdf');
     }
 
     // ── Helpers ──────────────────────────────────────────
